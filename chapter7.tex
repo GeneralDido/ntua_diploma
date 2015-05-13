@@ -1,0 +1,468 @@
+\chapter{Ανάλυση δεδομένων και αλγορίθμων}
+
+\section{Εισαγωγή}
+
+Στο κεφάλαιο αυτό θα μελετήσουμε την συμπεριφορά των αλγορίθμων σε ολόκληρη την χρονοσειρά με τυχαία \tl{training} και \tl{test sets}. Αυτό γίνεται ώστε να κατανοήσουμε την λειτουργία των αλγορίθμων και την υπολογιστική τους ικανότητα στις βέλτιστες συνθήκες. Λόγω των τυχαίων \tl{training} και \tl{validation sets}, η χρονοσειρά που δημιουργείται είναι ομαλή, και μπορεί να βοηθήσει στις προβλέψεις. Με αυτό τον τρόπο περιμένουμε καλύτερα σκορ από ότι σε πραγματικές συνθήκες, αλλά την ίδια στιγμή μπορούμε να μελετήσουμε τις σημαντικότητες των μεταβλητών σε ολόκληρο το δείγμα. Επομένως μετά το τέλος του κεφαλαίου θα γνωρίζουμε σε ένα πολύ καλό βαθμό τις δυνατότητες του κάθε μοντέλου όπως και το πόσο σημαντική είναι η κάθε μεταβλητή στον καθορισμό της εξόδου. 
+
+\section{\tl{Multicollinearity}}
+
+Σε αυτό το σημείο οφείλουμε να αναφέρουμε πως οι σημαντικότητες των μεταβλητών δεν μπορούν να προσεγγίσουν εύκολα την πραγματικότητα και αυτό οφείλεται σε οικονομικούς και πολιτικούς λόγους, στην κατάσταση της χώρας κατά την περίοδο αναφοράς όπως επίσης και στην αντίστοιχη νομοθεσία. Επίσης οι μεταβλητές μπορεί να παρουσιάζουν υψηλή σημαντικότητα λόγω του \tl{multicollinearity}, δηλαδή να επηρεάζονται από κάποιον άλλο παράγοντα (όπως από αυτούς που αναφέραμε πριν) ή ακόμη και από άλλες μεταβλητές του ίδιου δείγματος. Στην βιβλιογραφία \tl{collinearity} μεταξύ δύο \tl{predictors} μπορεί να συμβεί όταν υπάρχει μία σχέση μεταξύ τους, και αν αυτή η σχέση είναι γραμμική, δηλαδή της μορφής: $X_{2i} = \lambda_0 + \lambda_1X_{1i}$ τότε λέμε πως οι μεταβλητές είναι \tl{perfectly collinear}. Αν τώρα κάποια μεταβλητή εμφανίζει εξάρτηση από πολλές διαφορετικές μεταβλητές, τότε έχουμε \tl{multicollinearity}. Έχουμε \tl{perfect multicollinearity} αν η εξάρτηση είναι γραμμική, δηλαδή της μορφής:
+\begin{equation}
+\lambda_0 + \lambda_1X_{1i}+\lambda_2X_{2i}+\dots +\lambda_kX_{ki} = 0
+\end{equation}
+
+Για να έχουμε μία εποπτική εικόνα της σημαντικότητας του κάθε \tl{predictor} θα δημιουργήσουμε κάποια \tl{bar charts}. Αυτό όμως γίνεται ώστε να κατανοήσουμε τα μοντέλα και την δύναμη των μεταβλητών σε αυτά. Κατά την ανάλυση της χρονοσειράς στο κεφάλαιο 8 θα κάνουμε \tl{partial dependence plots} τα οποία είναι πιο ισχυρά και δείχνουν τον πραγματικό βαθμό της σχέσης κάθε μεταβλητής με το τελικό μας αποτέλεσμα. 
+
+\section{Σφάλματα}
+Στο μοντέλο έχουμε \tl{regression} διότι η έξοδός μας παίρνει τιμές συνεχείς επομένως θα χρησιμοποιήσουμε τις αντίστοιχες βιβλιοθήκες. Τα βήματα που ακολουθούνται για όλους τους αλγορίθμους είναι:
+\begin{enumerate}
+\item Δημιουργία του μοντέλου. Στην συγκεκριμένη περίπτωση θα χρησιμοποιήσουμε εργαλεία και βιβλιοθήκες της \tl{scikit-learn}
+\item Εισαγωγή του μοντέλου στο \tl{training set}
+\item Προβλέψεις στο \tl{validation set}
+\item Εξαγωγή συμπερασμάτων
+\end{enumerate}
+
+Για την ανάλυση σφάλματος θα χρησιμοποιήσουμε τα παρακάτω κριτήρια.
+
+\begin{equation}
+explained\_variance(y,\widehat{y}) = 1 - \frac{Var\left \{ y -\widehat{y}\right \}}{Var\left \{ y \right \}}
+\end{equation}
+
+\begin{equation}
+MAE(y,\widehat{y}) = \frac{1}{n_{samples}}\sum_{i=0}^{n_{samples}-1}|y_i-\widehat{y_i}| 
+\end{equation}
+
+\begin{equation}
+MSE(y,\widehat{y}) = \frac{1}{n_{samples}}\sum_{i=0}^{n_{samples}-1}(y_i-\widehat{y_i})^2
+\end{equation}
+
+\begin{equation}
+R^2(y,\overline{y}) = 1 - \frac{\sum_{i=0}^{n_{samples}-1}(y_i-\widehat{y_i})^2}{\sum_{i=0}^{n_{samples}-1}(y_i-\overline{y_i})^2}
+,
+\overline{y} = \frac{1}{n_{samples}}\sum_{i=0}^{n_{samples}-1}y_i
+\end{equation}
+\newpage
+\section{\tl{Random Forests}}
+
+\subsection{Εκτίμηση σφάλματος}
+
+Η ανάλυση θα ξεκινήσει από τον αλγόριθμο \tl{Random Forests}.
+
+\begin{minted}[linenos]{python}
+from sklearn.ensemble import RandomForestRegressor
+rf = RandomForestRegressor(n_estimators=1000,oob_score=True)
+rf.fit(dataset_train, smp_train)
+rf.get_params()
+y1 = rf.predict(dataset_test)
+\end{minted}
+
+Το πακέτο \tl{RandomForestRegressor} έχει ενσωματωμένες κάποιες μεθόδους οι οποίες μας δείχνουν την ακρίβεια του συστήματός μας όπως επίσης και εκτίμηση για το \tl{oob error}. 
+
+\begin{minted}[linenos]{python}
+print("Mean accuracy,training set = %f"%(rf.score(dataset_train, smp_train)))
+print("Mean accuracy,validation set = %f"%(rf.score(dataset_test, smp_test)))
+print 'OOB score: %.2f\n' % rf.oob_score_
+\end{minted}
+
+Ως έξοδο λαμβάνουμε: \\
+\tl{Mean accuracy,training set = 0.966240 \\
+Mean accuracy,validation set = 0.739425 \\
+OOB score: 0.75
+}
+
+Παρατηρούμε πως ο αλγόριθμος έχει ένα πολύ καλό σκορ, το οποίο δείχνει πως πράγματι μπορεί να υποθέσει σωστά την έξοδό μας, δηλαδή στην περίπτωσή μας το \tl{SMP} με βάση τα χαρακτηριστικά που του δίνουμε. Αυτό φαίνεται από το \tl{mean accuracy,validation set} όπως και από το \tl{oob score}, τα οποία μας λένε πως μπορούμε με ακρίβεια κοντά στο 75\% να υποθέσουμε σωστά την έξοδο. Η αντίστοιχη ακρίβεια στο σετ εκμάθησης είναι πολύ υψηλότερη, κοντά στο 97\%.
+
+Υπολογίζουμε τιμές των σφαλμάτων. \\
+
+\begin{minted}[linenos]{python}
+from sklearn import metrics as skm
+print("Explained variance = %f" %(skm.explained_variance_score(smp_test, y1)))
+print("Mean absolute error = %f" %(skm.mean_absolute_error(smp_test, y1)))
+print("Mean squared error = %f" %(skm.mean_squared_error(smp_test, y1)))
+print("R2_score = %f" %(skm.r2_score(smp_test, y1))) 
+\end{minted} 
+
+Έξοδος: \\
+\tl{Explained variance = 0.739508 \\
+Mean absolute error = 5.456595 \\
+Mean squared error = 58.660423 \\
+R2\_score = 0.739425}
+\newpage
+Έχουμε παρόμοια χαρακτηριστικά για \tl{explained variance} και \tl{$R^2$ score} ενώ το \tl{mean absolute error} μας δείχνει πόσο κοντά είναι οι τιμές που προβλέφθηκαν στις πραγματικές. Το μέσο σφάλμα είναι γύρω στις 5.5 μονάδες από την πραγματική τιμή, το οποίο σημαίνει πως το μοντέλο μπορεί να προβλέψει σε πολύ καλό ποσοστό την τελική τιμή. Το \tl{mean squared error} μετρά τον μέσο όρο των τετραγώνων των σφαλμάτων και λειτουργεί ως 'τυπική απόκλιση' των σφαλμάτων.
+
+\subsection{\tl{Cross Validation}}
+Η μέτρηση του \tl{cross validation} είναι σημαντική διότι υπάρχει πάντα ο κίνδυνος για \tl{overfitting} των δεδομένων μας, ακόμη και με διαφορετικά \tl{training} και \tl{test sets}, διότι μπορεί οι παράμετροι του μοντέλου να ρυθμιστούν με τρόπο τέτοιο ώστε ο εκτιμητής να λειτουργεί καλύτερα από ότι στην πραγματικότητα με τυχαία νέα δεδομένα. Η γνώση για το τεστ μπορεί να διαρρεύσει στο μοντέλο και τελικά τα αποτελέσματα που παράγουμε να μην είναι τα πραγματικά. Η λύση έρχεται με το να θεωρήσουμε ένα άλλο σύνολο του μοντέλου μας ως σύνολο επικύρωσης, να τρέξουμε τα αποτελέσματα του συνόλου εκπαίδευσης εκεί και ύστερα να τρέξουμε το μοντέλο στο \tl{test set}. Για παράδειγμα με το 5-\tl{fold cross validation} δημιουργούμε 5 τυχαία υποσύνολα στο σετ εκπαίδευσης, τρέχουμε τον αλγόριθμο σε 4 από αυτά και το επικυρώνουμε στο τελευταίο, και αυτό γίνεται 5 φορές. 
+
+\begin{minted}[linenos]{python}
+from sklearn import cross_validation
+scores = cross_validation.cross_val_score(rf, dataset_train, smp_train, cv=5)
+print 'Cross Validation Scores:' 
+print scores 
+print "Cross Validation Accuracy: %.2f (+/- %.2f)" % (scores.mean(), scores.std() / 2)
+\end{minted}
+
+Έξοδος για 5-\tl{fold Cross Validation}: \\
+\tl{Cross Validation Scores}: \\
+$\left [  0.75343825 \; \; \;  0.70602166 \; \; \; 0.76413408 \; \; \; 0.74446292 \; \; \; 0.72598341
+\right ]$ \\
+\tl{Cross Validation Accuracy}: 0.74 (+/- 0.01) \\
+
+Έξοδος για 10-\tl{fold Cross Validation}: \\
+\tl{Cross Validation Scores}: \\
+$\left [  0.786871 \; \; \;    0.66804677 \; \; \;  0.68724677 \; \; \;  0.76931317  \; \; \; 0.7993393 \; \; \;   0.78431832 \right.$ \\
+ $ \left. 0.71387939 \; \; \;  0.76512308\; \; \;   0.75068604 \; \; \;  0.68754537
+\right ]$ \\
+\tl{Cross Validation Accuracy}: 0.74 (+/- 0.02) \\
+
+Παρατηρούμε πως η απόδοση του αλγορίθμου είναι παρόμοια με την απόδοση που είδαμε στο \tl{test set} το οποίο σημαίνει πως το σύστημά μας είναι συνεπές και θα μπορεί να ανταπεξέλθει με παρόμοιο τρόπο και να παράγει το ίδιο καλά συμπεράσματα σε πραγματικές συνθήκες με νέα δεδομένα.
+\newpage
+
+Για να δούμε την επίδοση του αλγορίθμου ανάλογα με το βάθος που επιλέγουμε να έχει το δέντρο μας, κάνουμε 20 \tl{iterations} για βάθη 1 έως 20 (βάθος 1 σημαίνει πως το δέντρο έχει μόνο δύο φύλλα τα οποία δημιουργούνται από διαίρεση ενός χαρακτηριστικού σε κάποιο σημείο). Τα αποτελέσματα φαίνονται στα σχήματα \ref{figure:13} έως \ref{figure:15}.
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=1.4\textwidth]{fig/rf_accuracy_depth.png}}%
+  \caption{\tl{Random Forest: Accuracy}}
+  \label{figure:13}
+\end{figure}
+
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=1.4\textwidth]{fig/rf_mae.png}}%
+  \caption{\tl{Random Forest: Mean absolute error}}
+  \label{figure:14}
+\end{figure}
+
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=1.4\textwidth]{fig/rf_mse.png}}%
+  \caption{\tl{Random Forest: Mean squared error}}
+  \label{figure:15}
+\end{figure}
+
+Για μικρά βάθη βλέπουμε μία μεγάλη αύξηση της ακρίβειας, από 30\% για βάθος 1 σε 70\% για βάθος 6. Από κει και πέρα η βελτίωση της επίδοσης αυξάνει πιο αργά, και μετά από βάθος 12-13 δεν υπάρχει καμία αύξηση, μπορεί μάλιστα να παρατηρηθεί και πολύ μικρή μείωση. Αυτό οφείλεται στο γεγονός πως μετά από ένα σημείο έχουμε \tl{overfitting} των δεδομένων και δεν μπορούμε να δούμε βελτίωση.
+
+Με τον ίδιο τρόπο το \tl{MAE} όπως και το \tl{MSE} μειώνουν πολύ γρήγορα όσο αυξάνεται το βάθος, αλλά μετά από ένα σημείο έχουμε πλέον βελτιστοποιήσει την απόδοση και δεν μπορούμε να πετύχουμε κάτι καλύτερο.
+\newpage
+\subsection{Πραγματικές - εκτιμηθείσες τιμές \tl{SMP}}
+
+Το σχήμα \ref{figure:12} παρουσιάζει την διαφορά των πραγματικών τιμών σε σχέση με τις τιμές που προβλέφθηκαν για το \tl{SMP}. Ο άξονας \tl{x} παρουσιάζει τα δεδομενα και όχι τον χρόνο, διότι έγινε τυχαία επιλογή των δεδομένων κατά την κατασκευή των δέντρων.
+
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=1.4\textwidth]{fig/rf_smp_y2.png}}%
+  \caption{\tl{Random Forest}: Διαφορά \tl{real-expected} τιμών του \tl{SMP}}
+  \label{figure:12}
+\end{figure}
+
+\begin{minted}[linenos]{python}
+import matplotlib.pyplot as plt
+plt.figure()
+plt.plot(smp_test-y1)
+plt.xlabel('data')
+plt.ylabel('smp')
+plt.title('Difference between predicted and real values of smp')
+plt.show()
+\end{minted}
+
+Οι προβλέψεις είναι πολύ καλές και ακολουθούν τις πραγματικές τιμές. Αυτό φαίνεται από το γεγονός πως γενικά το σφάλμα είναι μικρό, κατά μέσο όρο 5 μονάδες από το πραγματικό. Παρατηρούμε σε κάποια σημεία μεγάλες διαφορές, οι οποίες προέρχονται από το γεγονός ότι σε αυτά τα σημεία το \tl{SMP} παίρνει ακραίες τιμές και το μοντέλο δεν ακολουθεί παίρνοντας πιο συγκρατημένες προβλέψεις πράγμα θετικό.
+
+\newpage
+\subsection{\tl{Feature Importances}}
+
+Θα δούμε ποιές μεταβλητές παίζουν τον πιο σημαντικό ρόλο στον καθορισμό του αποτελέσματος του αλγορίθμου.  
+
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=1.4\textwidth]{fig/rf_feature_importances.png}}%
+  \caption{\tl{Random Forest: Feature Importances}}
+  \label{figure:16}
+\end{figure}
+
+\begin{minted}[linenos]{python}
+fi = enumerate(rf.feature_importances_)
+df2 = df.drop('smp', 1)
+cols = df2.columns
+print [(value,cols[i]) for (i,value) in fi]
+features = mlab.csv2rec(path + 'rf_features.csv',delimiter=',')
+plt.figure()
+plt.bar(np.arange(len(features)),features['value'],label='values')
+plt.xticks(range(len(features)),features['feature'], ha = 'left')
+plt.ylabel('importance')
+plt.title('Feature importances (higher is better)')
+plt.show()
+\end{minted}
+\newpage
+
+\begin{table}[h!]
+\centering
+ \begin{tabular}{||c c||} 
+ \hline
+ \tl{Feature} & \tl{Importance} \\ 
+ \hline\hline
+ \textlatin{availability} & 0.0361405 \\ 
+ \hline
+ \textlatin{exports} & 0.0344914 \\
+ \hline
+ \textlatin{hydrogen} & 0.0502056 \\
+ \hline
+ \textlatin{imports} & 0.0733868 \\ 
+ \hline
+  \textlatin{lignite} & 0.0292468 \\ 
+ \hline
+  \textlatin{load\_forecast} & 0.1026408 \\ 
+ \hline
+  \textlatin{ngas} & 0.3220485 \\ 
+ \hline
+  \textlatin{res\_forecast} & 0.0717241 \\ 
+ \hline
+  \textlatin{waters} & 0.2040629 \\ 
+ \hline
+  \textlatin{waip} & 0.0760525 \\ 
+ \hline
+\end{tabular}
+\label{table:2}
+\caption{\tl{Random Forest}: Σημαντικότητες χαρακτηριστικών}
+\end{table}
+
+Το πιο σημαντικό χαρακτηριστικό στον καθορισμο της εξόδου είναι το \tl{ngas} και έπειτα έρχεται το \tl{waters}. Αυτά τα δύο χαρακτηριστικά καθορίζουν την τελική έξοδο σε ποσοστό μεγαλύτερο του 50\%. Αρκετά σημαντικό ρόλο φαίνεται να έχει και το \tl{load forecast} το οποίο καθορίζει σε ποσοστό 10\% την τιμή του \tl{SMP}. Οι υπόλοιπες μεταβλητές βοηθούν στον τελικό καθορισμό της εξόδου, αλλά σε μικρότερο ποσοστό. 
+
+\section{\tl{CART (Regression Trees)}}
+
+\subsection{Εκτίμηση σφάλματος}
+
+Τρέχουμε τον αλγόριθμο για \tl{regression trees} για βάθη από 1 έως 20 ώστε να δούμε ποιό είναι το βέλτιστο βάθος για το οποίο να πάρουμε αποτελέσματα.
+
+\begin{minted}[linenos]{python}
+from sklearn import tree
+from sklearn import metrics as skm
+train_acc = test_acc = exp_var_score = mae = mse = np.zeros(20) 
+for i in range (1,21):
+    tr = tree.DecisionTreeRegressor(max_depth=i)
+    tr.fit(dataset_train, smp_train)
+    tr.get_params()
+    y1 = tr.predict(dataset_test)
+    train_acc[i-1] = tr.score(dataset_train, smp_train)
+    test_acc[i-1] = tr.score(dataset_test, smp_test)
+    exp_var_score[i-1] = skm.explained_variance_score(smp_test, y1)
+    mae[i-1] = skm.mean_absolute_error(smp_test, y1)
+    mse[i-1] = skm.mean_squared_error(smp_test, y1)
+\end{minted}
+
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=1.4\textwidth]{fig/accuracy_tree.png}}%
+  \caption{\tl{Tree Regressor: Accuracy}}
+  \label{figure:17}
+\end{figure}
+
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=1.4\textwidth]{fig/mae_tree.png}}%
+  \caption{\tl{Tree Regressor: Mean absolute error}}
+  \label{figure:18}
+\end{figure}
+
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=1.4\textwidth]{fig/mse_tree.png}}%
+  \caption{\tl{Tree Regressor: Mean squared error}}
+  \label{figure:19}
+\end{figure}
+\newpage
+Σε αντίθεση με πριν, ο αλγόριθμος δεν έχει τόσο καλές επιδόσεις, και φτάνει μέγιστη ακρίβεια στο 54,75\% για δέντρο βάθους 6. Όσο αυξάνεται το βάθος η ακρίβεια δεν αυξάνει, μάλιστα μειώνει το οποίο σημαίνει πως έχουμε \tl{overfitting} στο μοντέλο. Για βάθος δέντρου ίσο με \tl{max\_depth} το αποτέλεσμα της πρόβλεψης είναι λίγο κάτω από 50\%. Το ίδιο δείχνουν και τα αποτελέσματα για \tl{MAE} και \tl{MSE}, επομένως η ανάλυση θα γίνει για δέντρο βάθους 6.
+
+\subsection{\tl{Cross Validation}}
+
+Όπως και στα \tl{random forest}, χρησιμοποιούμε \tl{cross validation} ώστε να επικυρώσουμε τα αποτελέσματά μας. Τα αποτελέσματα είναι όπως τα προβλεπόμενα.\\
+
+\tl{5-fold Cross Validation Scores}: \\
+$\left [  0.57645212 \; \; \;  0.55334927 \; \; \; 0.64557411 \; \; \; 0.6136979 \; \; \; 0.54650035
+\right ]$ \\
+\tl{Cross Validation Accuracy}: 0.59 (+/- 0.02) \\
+
+\tl{10-fold Cross Validation Scores}: \\
+$\left [  0.64172542 \; \; \;    0.42875275 \; \; \;  0.53303435 \; \; \;  0.59282483  \; \; \; 0.67429731 \; \; \;   0.59046097 \right.$ \\
+ $ \left. 0.64643966 \; \; \;  0.52166911; \; \;   0.60511882 \; \; \;  0.3935244
+\right ]$ \\
+\tl{Cross Validation Accuracy}: 0.56 (+/- 0.04) \\
+
+\subsection{Πραγματικές - εκτιμηθείσες τιμές \tl{SMP}}
+
+Στο σχήμα \ref{figure:20} βλέπουμε την διαφορά \tl{real} και \tl{expected} τιμών για το \tl{SMP} σύμφωνα με το τον αλγόριθμο για \tl{regression trees}.
+
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=1.4\textwidth]{fig/tree_smp_y2.png}}%
+  \caption{\tl{Tree Regressor}: Διαφορά \tl{real-expected} τιμών του \tl{SMP}}
+  \label{figure:20}
+\end{figure}
+
+Είναι εμφανής η διαφορά στην ακρίβεια σε σχέση με τον αλγόριθμο \tl{random forest}. Έχουμε μεγαλύτερη απόκλιση από τις πραγματικές τιμές σε ολόκληρο το δείγμα. Επίσης φαίνεται πως το μοντέλο προσπαθεί να προβλέψει ακραίες τιμές, αρκετές φορές μάλιστα λάθος.
+
+\subsection{\tl{Feature Importances}}
+
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=1.4\textwidth]{fig/tree_feature_importances.png}}%
+  \caption{\tl{Tree Regressor: Feature Importances}}
+  \label{figure:21}
+\end{figure}
+
+\begin{table}[h!]
+\centering
+ \begin{tabular}{||c c||} 
+ \hline
+ \tl{Feature} & \tl{Importance} \\ 
+ \hline\hline
+ \textlatin{availability} & 0.0023202 \\ 
+ \hline
+ \textlatin{exports} & 0.0111215 \\
+ \hline
+ \textlatin{hydrogen} & 0.0548785 \\
+ \hline
+ \textlatin{imports} & 0.0570344 \\ 
+ \hline
+  \textlatin{lignite} & 0.0013275 \\ 
+ \hline
+  \textlatin{load\_forecast} & 0.1269267 \\ 
+ \hline
+  \textlatin{ngas} & 0.4016380 \\ 
+ \hline
+  \textlatin{res\_forecast} & 0.0545563 \\ 
+ \hline
+  \textlatin{waters} & 0.2391213 \\ 
+ \hline
+  \textlatin{waip} & 0.0510756 \\ 
+ \hline
+\end{tabular}
+\label{table:2}
+\caption{\tl{Tree Regressor}: Σημαντικότητες χαρακτηριστικών}
+\end{table}
+
+Ο αλγόριθμος \tl{CART} θεωρεί σημαντικό το χαρακτηριστικό \tl{ngas} σε ποσοστό 40\%, περισσότερο από ότι στον αλγόριθμο \tl{random forest}. Το ίδιο συμβαίνει και με τα χαρακτηριστικά \tl{waters} και \tl{load\_forecast} τα οποία έχουν μεγαλύτερη σημαντικότητα σε σχέση με αυτή που έχουν στα \tl{random forest}. Τα υπόλοιπα χαρακτηριστικά φαίνεται πως παίζουν μικρότερο ρόλο, μάλιστα τα \tl{lignite} και \tl{availability} έχουν μηδαμινό ποσοστό στο τελικό αποτέλεσμα. 
+\newpage
+Τα παραπάνω οφείλονται στο γεγονός ότι από την μία πλευρά το δέντρο μας έχει μικρό βάθος, επομένως είναι εύλογο τα ποσοστά των χαρακτηριστικών να είναι υψηλότερα, από την άλλη δεν μπορεί να υπολογίσει με τόσο καλή ακρίβεια όπως γίνεται στα \tl{random forest} ποιά χαρακτηριστικά χρειάζονται και με τί ποσοστό για την βελτιστοποίηση των προβλέψεων. \newpage
+Καταλήγουμε στο συμπέρασμα πως για πολύ καλό καθορισμό της εξόδου χρειάζονται όλα τα χαρακτηριστικά σε κάποιο βάθμο, αλλά κύριο ρόλο φαίνεται να παίζει το \tl{ngas}. Επίσης είναι εμφανές ότι ο αλγόριθμος \tl{random forest} βελτιστοποιεί την ιδέα που υπάρχει στον αλγόριθμο \tl{CART} και παράγει έξοδο με πολύ μεγαλύτερη ακρίβεια, πράγμα που συμφωνεί με όσα ειπώθηκαν στην θεωρητική ανάλυση.
+
+\subsection{Τελικό Δέντρο}
+
+Δημιουργούμε το δέντρο και το κάνουμε εξαγωγή ως αρχείο .\tl{dot} και ύστερα το ανοίγουμε μέσω του \tl{Graphviz}.  
+
+\begin{minted}[linenos]{python}
+sklearn.externals.six import StringIO
+with open(path+"tree_3.dot", 'w') as f:
+    f = tree.export_graphviz(tr, out_file=f)
+\end{minted}
+
+\begin{sidewaysfigure}
+  \makebox[\textwidth][c]{\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{fig/tree_3.png}}%
+  \caption{Δέντρο αλγορίθμου \tl{Tree Regressor} - βάθος 4}
+  \label{figure:22}
+\end{sidewaysfigure}
+
+Επειδή το δέντρο ήταν πολύ μεγάλο για να παρουσιαστεί εδώ, κλαδέψαμε τους κόμβους για βάθος 5 και 6 και οπότε τελικά παρουσιάζουμε το αποτέλεσμα για δέντρο βάθους 4 το οποίο δίνει \tl{mean accuracy score = 0.463656}. Οι μεταβλητές που υπάρχουν στο δέντρο είναι οι εξής:
+\begin{itemize}
+\item $X\left [ 3 \right ]$ : \tl{imports}
+\item $X\left [ 5 \right ]$ : \tl{load\_forecast}
+\item $X\left [ 6 \right ]$ : \tl{ngas}
+\item $X\left [ 7 \right ]$ : \tl{res\_forecast}
+\item $X\left [ 8 \right ]$ : \tl{waters}
+\end{itemize} 
+
+Σε κάθε κλάδο του δέντρου έχουμε 3 χαρακτηριστικά: το όνομα της μεταβλητής, το \tl{MSE} και τον αριθμό των δεδομένων που υπάρχουν στον συγκεκριμένο κλάδο. Εφόσον το \tl{training set} περιέχει το 66.6\% του συνόλου μας, έχουμε αρχικά 1202 δείγματα. Ανάλογα με το αν ισχύει η συνθήκη που περιγράφεται στον κάθε κόμβο ή όχι πάμε στο αντίστοιχο φύλλο, στο αριστερό αν η συνθήκη είναι αληθής και στο δεξιό αν δεν είναι (οι συνθήκες είναι της μορφής $X\leq \alpha$ το οποίο ισοδυναμεί με $X>\alpha$ με ναι στο δεξί φύλλο και όχι στον αριστερό). Το δέντρο είναι δυαδικό.
+
+Η μεταβλητή \tl{ngas} παίζοντας τον κύριο ρόλο κάνει το πρώτο \tl{partition}, ακολουθούμενο από την μεταβλητή \tl{waters}. Το \tl{load\_forecast} ως τρίτο σημαντικότερο κάνει 2 \tl{partitions} στο επίπεδο 3. Παρατηρούμε πως σε κάθε βήμα το δέντρο δεν χωρίζεται σε δύο ισομεγέθη κομμάτια, αλλά περισσότερο σε μία αναλογία κοντά στο 3:1. Οι μεταβλητές εμφανίζονται σε σειρά σημαντικότητας σε κάθε επίπεδο, και μάλιστα (παρότι δεν φαίνεται στο σχήμα) σε μεγαλύτερα βάθη οι πιο σημαντικές μεταβλητές εμφανίζονται πολλαπλά (για παράδειγμα το \tl{ngas} εμφανίζεται ξανά για βάθος 4 ενώ το \tl{lignite} εμφανίζεται αρκετά πιο μετά). Σημαντικό επίσης το γεγονός ότι χρησιμοποιούμε μόνο 5 από τις 10 μεταβλητές για ακρίβεια 46\% ενώ σε βάθος 6 με ακρίβεια 56\% χρησιμοποιούνται όλες οι μεταβλητές το οποίο επιβεβαιώνει πως όλα τα χαρακτηριστικά του μοντέλου χρησιμεύουν στον καθορισμό της εξόδου.
+\newpage
+\section{\tl{MARS}}
+
+Για το μοντέλο \tl{MARS} χρησιμοποιήθηκε η βιβλιοθήκη \tl{pyearth} που δημιούργησε ο \tl{Jason Rudy} η οποία εφαρμόζει τον αλγόριθμο που αναπτύχθηκε από τον \tl{Jerome Friedman} και παρουσιάστηκε αναλυτικά στο κεφάλαιο 3 (\citealpsec{pyearth}). 
+
+\begin{minted}[linenos]{python}
+from pyearth import Earth
+model = Earth()
+model.fit(dataset_train,smp_train)
+print model.trace()
+print model.summary()
+\end{minted}
+
+\subsection{\tl{Forward Pass}}
+
+Στο σχήμα \ref{figure:23} παρουσιάζεται η πρώτη φάση του αλγορίθμου, όπου δημιουργείται το μοντέλο προσθέτοντας συναρτήσεις βάσης. Η αρχική μας συνάρτηση είναι η $h_0(X)=1$. Οι μεταβλητές του συστήματός μας ονομάζονται \tl{var}, \tl{terms} είναι ο αριθμός των συναρτήσεων βάσης που έχουμε εισάγει μέχρι το συγκεκριμένο \tl{iteration} του αλγορίθμου, \tl{gcv} είναι το κριτήριο \tl{Generalized Cross Validation}, \tl{rsq} είναι το $R^2$ του μοντέλου και \tl{grsq} είναι μία εκτίμηση της προγνωστικής ικανότητας του μοντέλου.  
+
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=1.4\textwidth]{fig/forward_pass.png}}%
+  \caption{\tl{MARS: Forward Pass}}
+  \label{figure:23}
+\end{figure}
+
+Όπως και στους προηγούμενους αλγορίθμους που εξετάστηκαν, η πιο σημαντική μεταβλητή είναι το \tl{ngas} ακολουθούμενο από τα \tl{waters}. Οι δύο μεταβλητές μαζί μας δίνουν προγνωστική ικανότητα στο 45,4\%. Ενδιαφέρον παρουσιάζει το γεγονός ότι οι επόμενες τρεις μεταβλητές για τις οποίες δημιουργούνται συναρτήσεις βάσεις είναι τα \tl{imports}, \tl{hydrogen} και \tl{waip}. Παρατηρούμε πως όσο αυξάνουμε την πολυπλοκότητα του μοντέλου τότο μικρότερο είναι το \tl{MSE} ενώ οι μεταβλητές \tl{gcv, rsq} και \tl{grsq} αυξάνουν με μειούμενο ρυθμό. Κατά την πρώτη φάση του αλγορίθμου παίρνουμε τιμές \tl{gcv} = 74.71,  $R^2 = 0.732$ και \tl{grsq} = 0.674, τιμές πολύ κοντά στις αντίστοιχες που είχαμε βρει με τον αλγόριθμο \tl{Random Forest}.
+
+\subsection{\tl{Pruning Pass}}
+
+Η δεύτερη φάση του αλγορίθμου έρχεται με την αντίστροφη διαδικασία κλαδέματος. Σκοπός είναι να κλαδευτούν συναρτήσεις που συμβάλλουν λιγότερο στο πόσο καλό \tl{fit} θα κάνει το μοντέλο. Ο αλγόριθμος θα διαλέξει το \tl{iteration} που ελαχιστοποιεί το \tl{gcv}, το οποίο συμβαίνει στην δέκατη επανάληψη. Στην ίδια επανάληψη έχουμε και το μέγιστο \tl{grsq}, το οποίο και θέλουμε να μεγιστοποιήσουμε. Επομένως το τελικό μας μοντέλο θα έχει 10 λιγότερους όρους σε σχέση με το αρχικό, και θα είναι το βέλτιστο μοντέλο που μπορεί να παράγει ο αλγόριθμος.
+
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{fig/pruning_pass2.png}}%
+  \caption{\tl{MARS: Pruning Pass}}
+  \label{figure:24}
+\end{figure}
+
+\subsection{Τελικό μοντέλο}
+
+Στο σχήμα \ref{figure:24} βλέπουμε το τελικό μοντέλο του αλγορίθμου. Η πρώτη στήλη περιέχει όλες τις συναρτήσεις βάσεις που δημιουργήθηκαν κατά το \tl{forward pass}, η δεύτερη στήλη μας λέει ποιές από αυτές τις συναρτήσεις κλαδεύτηκαν ενώ η τρίτη στήλη μας παρέχει πληροφορίες σχετικά με τον συντελεστή της κάθε συνάρτησης. Παρατηρούμε πως μία εκ των δύο συναρτήσεων βάσης της μεταβλητής \tl{ngas} κλαδεύτηκε. Οι υπόλοιπες αρχικές συναρτήσεις έμειναν ως είχαν κατά το δεύτερο πέρασμα. Τα τελικά αποτελέσματα φαίνονται στην τελευταία γραμμή. Ο αλγόριθμός μας μπορεί να υπολογίσει με ποσοστό κοντά στο 70\% την έξοδο, μία πολύ καλή επίδοση.
+
+\subsection{Πραγματικές - εκτιμηθείσες τιμές \tl{SMP}}
+
+Στο σχήμα \ref{figure:26} έχουμε το διάγραμμα με τη διαφορά πραγματικών και \tl{expected} τιμών του \tl{SMP}. Το μοντέλο παράγει εμφανώς καλύτερα αποτελέσματα σε σχέση με τα αντίστοιχα του μοντέλου \tl{CART} και είναι αντίστοιχο σε επίδοση με το μοντέλο \tl{Random Forest}. Μάλιστα υπάρχουν σημεία που οι προβλέψεις του μοντέλου είναι καλύτερες από του \tl{Random Forest} με μικρότερο σφάλμα και κάποια σημεία που το μοντέλο παρουσιάζει πολύ ακραίες τιμές. Σε γενικές γραμμές όμως μπορούμε να πούμε πως τα μοντέλα \tl{MARS} και \tl{Random Forest} δίνουν πολύ καλές προβλέψεις, ενώ το μοντέλο \tl{CART} όχι τόσο ικανοποιητικές.
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{fig/mars_pred1.png}}%
+  \caption{\tl{MARS}: Πραγματικές και εκτιμηθείσες τιμές του \tl{SMP}}
+  \label{figure:26}
+\end{figure}
+
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=2.3\textwidth]{fig/earth.png}}%
+  \caption{\tl{MARS: Earth Model}}
+  \label{figure:25}
+\end{figure}
+
+
+%\newpage
+%\section{Γραμμική παρεμβολή}
+%
+%Αρχικά ελέγχουμε την σχέση \tl{SMP-ngas} με ένα διάγραμμα και δημιουργούμε το \tl{trendline} (το οποίο ενσωματώσαμε στο διάγραμμα). Ύστερα από την σχέση αυτή υπολογίζουμε τα αντίστοιχα σφάλματα.
+%
+%\begin{figure}
+%  \makebox[\textwidth][c]{\includegraphics[width=1.4\textwidth]{fig/smp-ngas.png}}%
+%  \caption{\tl{SMP and ngas}}
+%  \label{figure:27}
+%\end{figure}
+%
+%\begin{minted}[linenos]{python}
+%smp = train_imp[:,0]
+%ngas = dataset[:,6]
+%plt.scatter(ngas,smp, label = 'smp and ngas values')
+%z = np.polyfit(ngas, smp, 1)
+%p = np.poly1d(z)
+%plt.plot(ngas,p(ngas),'r', label='smp = 0.000802*ngas + 25.160520')
+%plt.ylabel('smp')
+%plt.xlabel('ngas production')
+%plt.title('smp for different quantities of lignite and ngas')
+%plt.legend(loc='upper left')
+%plt.show()
+%print 'smp = %.6f*ngas + %.6f'%(z[0],z[1])
+%\end{minted}
+%
+%Παρατηρούμε πως μόνο από γραμμική παρεμβολή μεταξύ των δύο στοιχείων έχουμε ποσοστό 30\% για πρόβλεψη της τιμής με μέσο απόλυτο σφάλμα τα 9.6\euro. \\
+%
+%Κάνοντας την ίδια διαδικασία με άλλες μεταβλητές παρατηρούμε τιμές κοντά ή χαμηλότερες από το \tl{importance score} των \tl{random forest} και \tl{CART}. Παρατηρούμε επίσης πως καλύτερα σκορ παρουσιάζουν ξανά οι μεταβλητές \tl{ngas}, \tl{waters} και \tl{load\_forecast} με τις τελευταίες να έχουν ποσοστό στο 15\%. Να σημειωθεί εδώ πως το μοντέλο αυτό κάνει απλά γραμμική παρεμβολή των δεδομένων σε σχέση με το \tl{SMP} και σε καμία περίπτωση δεν μπορεί να χρησιμοποιηθεί για πρόβλεψη και έγινε μόνο για καλύτερο έλεγχο των χαρακτηριστικών. Είναι όμως ενδιαφέρον το γεγονός πως η κάθε μεταβλητή παρουσιάζει παρόμοια συμπεριφορά ως προς το πόσο καλά μπορεί να καθορίσει την έξοδο σε σχέση με τους αλγορίθμους που αναλύθηκαν πριν.
+
+%\begin{figure}
+%  \makebox[\textwidth][c]{\includegraphics[width=1.4\textwidth]{fig/variance_inter.png}}%
+%  \caption{\tl{Feature Variance - Linear interpolation}}
+%  \label{figure:28}
+%\end{figure}
+%
+%
+%Στο σχήμα \ref{figure:29} έχουμε ένα \tl{scatterplot} του \tl{SMP} σε συνάρτηση με τις μεταβλητές \tl{ngas} και \tl{waters} οι οποίες ήταν οι πιο σημαντικές στην ανάλυσή μας. Παρατηρούμε μία εξάρτηση μεταξύ των τιμών των δύο χαρακτηριστικών και του \tl{SMP}.
+%
+%
+%\begin{figure}
+%  \makebox[\textwidth][c]{\includegraphics[width=1.4\textwidth]{fig/ngas_waters.png}}%
+%  \caption{\tl{Waters and ngas to SMP}}
+%  \label{figure:29}
+%\end{figure}
+
+
+\newpage
+\thispagestyle{empty}

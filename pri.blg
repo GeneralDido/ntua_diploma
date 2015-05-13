@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: pri.aux
+The style file: plain.bst
+Database file #1: mybib.bib
+I was expecting a `,' or a `}'---line 48 of file mybib.bib
+ :  year=2012
+ :           .
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 55 of file mybib.bib
+ :  year=2009
+ :           .
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 62 of file mybib.bib
+ :  year=1995
+ :           .
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 68 of file mybib.bib
+ :  year=2005
+ :           .
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 73 of file mybib.bib
+ : year = 2007
+ :            .
+I'm skipping whatever remains of this entry
+Unbalanced braces---line 238 of file mybib.bib
+ :  howpublished = "\textlatin{http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm#ooberr}
+ :                                                                                                    }"
+I'm skipping whatever remains of this entry
+Too many commas in name 1 of "\textlatin{Hong Tian}, \textlatin{Shameek Biswas}, \textlatin{Marianthi Markatou}, \textlatin{George Hripcsak}" for entry mar_cross
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "\tl{Atkeson}, \tl{Christopher G and Moore}, \tl{Andrew W and Schaal}, \tl{Stefan}" for entry atkeson1999locally
+while executing---line 1049 of file plain.bst
+Warning--to sort, need author or key in analysisres
+Warning--empty author in analysisres
+Warning--empty journal in analysisres
+Warning--empty year in analysisres
+Too many commas in name 1 of "\textlatin{Hong Tian}, \textlatin{Shameek Biswas}, \textlatin{Marianthi Markatou}, \textlatin{George Hripcsak}" for entry mar_cross
+while executing---line 1090 of file plain.bst
+Warning--empty year in berk_forests
+Too many commas in name 1 of "\tl{Atkeson}, \tl{Christopher G and Moore}, \tl{Andrew W and Schaal}, \tl{Stefan}" for entry atkeson1999locally
+while executing---line 1090 of file plain.bst
+Warning--empty publisher in Criminisi2011TR
+Warning--empty booktitle in deng2011bias
+Warning--empty booktitle in frayman2002solving
+Warning--empty journal in saar2007handling
+Warning--empty publisher in spssclementine
+(There were 10 error messages)

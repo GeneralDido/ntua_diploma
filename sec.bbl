@@ -1,0 +1,56 @@
+\begin{thebibliography}{10}
+
+\bibitem{crossval}
+\textlatin{Cross Validation error}.
+\newblock \textlatin{\url{http://www.cs.cmu.edu/~schneide/tut5/node42.html}}.
+
+\bibitem{residual}
+\textlatin{Judging Model Quality by Residuals}.
+\newblock \textlatin{\url{http://www.cs.cmu.edu/~schneide/tut5/node41.html}}.
+
+\bibitem{kdkeys}
+\textlatin{Partial Dependence Plots}.
+\newblock
+  \textlatin{\url{http://scikit-learn.org/stable/auto_examples/ensemble/plot_partial_dependence.html}}.
+
+\bibitem{shannon}
+\textlatin{Shannon Entropy}.
+\newblock \textlatin{\url{http://www.ueltschi.org/teaching/chapShannon.pdf}}.
+
+\bibitem{mathworks}
+\textlatin{Supervised Learning Workflow and Algorithms}.
+\newblock
+  \textlatin{\url{http://www.mathworks.com/help/stats/supervised-learning-machine-learning-workflow-and-algorithms.html/}}.
+
+\bibitem{kaggle}
+\textlatin{Titanic: Machine Learning from Disaster}.
+\newblock \textlatin{\url{http://www.kaggle.com/c/titanic-gettingStarted}}.
+
+\bibitem{mars_example}
+\tl{A short example of multivariate adaptive regression splines (MARS)}.
+\newblock
+  \tl{\url{http://qizeresearch.wordpress.com/2013/12/04/a-short-example-of-multivariate-adaptive-regression-splines-mars/}}.
+
+\bibitem{unc_edu}
+\tl{Binary recursive partitioning}.
+\newblock
+  \tl{\url{http://www.unc.edu/courses/2010spring/ecol/562/001/docs/lectures/lecture21.htm}}.
+
+\bibitem{mars_ref}
+\tl{Multivariate Adaptive Regression Splines}.
+\newblock
+  \tl{\url{https://www.statsoft.com/Textbook/Multivariate-Adaptive-Regression-Splines}}.
+
+\bibitem{pyearth}
+\tl{py-earth}.
+\newblock \tl{\url{https://github.com/jcrudy/py-earth}}.
+
+\bibitem{sklearn}
+\tl{Scikit-learn}.
+\newblock \tl{\url{http://scikit-learn.org/}}.
+
+\bibitem{mars_train}
+\tl{Training in MARS}.
+\newblock \tl{\url{http://www.salford-systems.com/videos/training/mars}}.
+
+\end{thebibliography}

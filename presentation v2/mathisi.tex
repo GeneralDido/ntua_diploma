@@ -1,0 +1,104 @@
+\section{Μάθηση}
+
+%\subsection*{?}
+%\begin{frame}
+%\frametitle{Ανάλυση}
+%\begin{itemize}
+%\item Ανάλυση χρονοσειράς \tl{SMP} με τρεις αλγορίθμους
+%\item Χρονική αλληλουχία \tl{train} και \tl{test sets} 
+%\item Βελτίωση Μοντέλου μέσω μεταβλητών υστέρησης $x(t-1),x(t-2),\dots$
+%\item Σημαντικότητες Μεταβλητών - \tl{Partial Dependence Plots}
+%\end{itemize}
+%\end{frame}
+
+\subsection*{?}
+\begin{frame}
+\frametitle{Μηχανική Μάθηση}
+\begin{itemize}
+\item Απόκτηση πληροφοριών από επεξεργασία δεδομένων
+\item Αυτοματοποιημένη ανάλυση 
+\item Πρόβλεψη μη γραμμικότητας 
+\item Ευρύ πλήθος εφαρμογών 
+\end{itemize}
+Πολύ χρήσιμη όταν το πρόβλημα παρουσιάζει μοτίβο το οποίο δεν μπορούμε να περιγράψουμε με μαθηματικό τρόπο.
+\end{frame}
+
+\subsection*{?}
+\begin{frame}
+\frametitle{Αλγόριθμοι - Πλεονεκτήματα}
+\begin{itemize}
+\item \tl{CART}: Απεικόνιση Μοντέλου σε Δέντρα
+\item \tl{Random Forests}: Βαθμός επιρροής μεταβλητών στην έξοδο (Σημαντικότητα Μεταβλητών)
+\item \tl{MARS}: Δημιουργία Συνάρτησης
+\end{itemize}
+Η ανάλυση έγινε στη γλώσσα προγραμματισμού \tl{Python}.
+\end{frame}
+
+
+\subsection*{?}
+\begin{frame}
+\frametitle{Διαδικασία Μάθησης}
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{fig/head3.png}}%
+\end{figure}
+\end{frame}
+
+%\subsection*{?}
+%\begin{frame}
+%\frametitle{}
+%\begin{enumerate}
+%\item Δημιουργία Μοντέλου - Προετοιμασία Δεδομένων
+%\item Επιλογή Αλγορίθμου (\tl{CART, Random Forests, MARS})
+%\item Ταίριασμα αλγορίθμου με μοντέλο (\tl{fit})
+%\item Μέτρηση ακρίβειας μοντέλου και σχέσεων μεταξύ \tl{predictors} και εξόδου
+%\end{enumerate}
+%\end{frame}
+
+\subsection*{?}
+\begin{frame}
+\frametitle{Δείκτες μέτρησης ακρίβειας Μοντέλων}
+
+Μέτρηση ακρίβειας μοντέλου $(- \infty ,1]$ - όσο υψηλότερο τόσο καλύτερο:
+\begin{equation}
+explained\_variance(y,\widehat{y}) = 1 - \frac{Var\left \{ y -\widehat{y}\right \}}{Var\left \{ y \right \}}
+\end{equation}
+
+¶λλοι δείκτες για εξαγωγή ολοκληρωμένων συμπερασμάτων:
+\begin{itemize}
+\item $R^2(y,\overline{y})$: Ακρίβεια [0,1]
+\item $MSE(y,\widehat{y})$: Μέσο τετραγωνικό σφάλμα $[0,\infty)$
+\item $MAE(y,\widehat{y})$ Μέσο απόλυτο σφάλμα $[0,\infty)$
+\end{itemize}
+%\begin{equation}
+%R^2(y,\overline{y}) = 1 - \frac{\sum_{i=0}^{n_{samples}-1}(y_i-\widehat{y_i})^2}{\sum_{i=0}^{n_{samples}-1}(y_i-\overline{y_i})^2}
+%,
+%\overline{y} = \frac{1}{n_{samples}}\sum_{i=0}^{n_{samples}-1}y_i
+%\end{equation}
+%
+%\begin{equation}
+%MSE(y,\widehat{y}) = \frac{1}{n_{samples}}\sum_{i=0}^{n_{samples}-1}(y_i-\widehat{y_i})^2
+%\end{equation}
+%
+%\begin{equation}
+%MAE(y,\widehat{y}) = \frac{1}{n_{samples}}\sum_{i=0}^{n_{samples}-1}|y_i-\widehat{y_i}| 
+%\end{equation}
+\end{frame}
+
+\subsection*{?}
+\begin{frame}
+\frametitle{Μέθοδος Ανάλυσης}
+\begin{figure}
+  \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{fig/smp.png}}%
+\end{figure}
+\end{frame}
+
+\subsection*{?}
+\frametitle{Μέθοδος Ανάλυσης - Μοντέλα}
+\begin{frame}
+\frametitle{Σταθερότητα Μοντέλων}
+Θέλουμε τα μοντέλα να είναι σταθερά ως προς την δομή τους:
+\begin{itemize}
+\item Να μην έχουν ακραία χαρακτηριστικά (όπως πολύ χαμηλή ακρίβεια) σε κάποια από τις εκτελέσεις
+\item Παρόμοιες σημαντικότητες μεταβλητών σε διαφορετικές εκτελέσεις
+\end{itemize}
+\end{frame}

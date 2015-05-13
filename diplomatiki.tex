@@ -1,0 +1,328 @@
+\documentclass[12pt, twoside, a4paper]{book}
+\usepackage[english,greek]{babel}
+\usepackage{epsfig}
+%\usepackage[english,greek]{babel}
+%\usepackage[T1]{fontenc}
+\usepackage[iso-8859-7]{inputenc}
+%\usepackage{graphicx}
+%\DeclareGraphicsRule{.tif}{bmp}{}{}
+\usepackage{indentfirst}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{index}
+\usepackage{epstopdf}
+\usepackage{natbib}
+\usepackage[nottoc]{tocbibind}
+\pagestyle{headings}
+\usepackage{indentfirst}
+\usepackage{url} 
+\usepackage[resetlabels]{multibib}
+\usepackage{wrapfig}
+\usepackage{lscape}
+\usepackage{rotating}
+
+\newcites{pri}{Âéâëéïãñáößá}
+\newcites{sec}{Éóôüôïðïé}
+\def\@mb@citenamelist{cite,citep,citet,citealp,citealt}
+\newcommand{\tl}[1]{\textlatin{#1}}
+\newcommand{\en}{\selectlanguage{english}}
+\newcommand{\gr}{\selectlanguage{greek}}
+\usepackage{graphicx}
+\usepackage{afterpage}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{etoolbox}
+\BeforeBeginEnvironment{minted}{\en{}
+\AfterEndEnvironment{minted}{\gr{}}}
+%\providecommand{\keywords}[1]{\textbf{\textit{ËÝîåéò êëåéäéÜ: }} #1}
+%\providecommand{\keywords2}[1]{\textbf{\textit{\tl{Keywords: }}} #1}
+
+\begin{document}
+\thispagestyle{empty}
+\title{
+\vspace{-6ex}
+\begin{center}
+\includegraphics[scale=1]{pyrforos.eps}
+\end{center}
+\Large{Å}\large{ÈÍÉÊÏ}
+\Large{Ì}\large{ÅÔÓÏÂÉÏ}
+\Large{Ð}\large{ÏËÕÔÅ×ÍÅÉÏ} \\
+\normalsize{Ô}\small{ÌÇÌÁ}
+\normalsize{Ç}\small{ËÅÊÔÑÏËÏÃÙÍ}
+\normalsize{Ì}\small{Ç×ÁÍÉÊÙÍ}
+\normalsize{Ê}\small{ÁÉ}
+\normalsize{Ì}\small{Ç×ÁÍÉÊÙÍ}
+\normalsize{Õ}\small{ÐÏËÏÃÉÓÔÙÍ} \\
+\vspace{2ex}
+ÔïìÝáò Çëåêôñéêþí Âéïìç÷áíéêþí ÄéáôÜîåùí êáé ÓõóôçìÜôùí ÁðïöÜóåùí \\
+ÅñãáóôÞñéï ÓõóôçìÜôùí ÁðïöÜóåùí êáé Äéïßêçóçò \\
+\vspace{8ex}
+\large \textbf{Äéåñåýíçóç áéôéùäþí ó÷Ýóåùí óôçí åëëçíéêÞ áãïñÜ çëåêôñéêÞò åíÝñãåéáò ìå ôç ÷ñÞóç ìåèüäùí ìç÷áíéêÞò ìÜèçóçò} \\
+\vspace{7ex}
+\large
+ÄÉÐËÙÌÁÔÉÊÇ ÅÑÃÁÓÉÁ \\
+\vspace{2ex}
+\normalsize
+ôïõ \\
+\vspace{2ex}
+\parbox[c]{0.4\textwidth} { \center\textbf{
+Äçìçôñßïõ ÐáíïõñÞ}}
+\vspace{10ex}
+\flushleft
+\begin{tabbing}
+	\textbf{ÅðéâëÝðùí}: \= ÉùÜííçò ØáññÜò
+				\\
+			    \> ÊáèçãçôÞò
+\end{tabbing}
+}
+\date{
+\normalsize
+ÁèÞíá, Ïêôþâñéïò 2014}
+
+\maketitle
+\newpage
+\thispagestyle{empty}
+\hspace{10pt}
+%\tiny
+%(this page is left intentionally blanc)
+%\normalsize
+\newpage
+\thispagestyle{empty}
+\vspace{-6ex}
+\begin{center}
+\includegraphics[scale=1]{pyrforos.eps}
+
+\Large{Å}\large{ÈÍÉÊÏ}
+\Large{Ì}\large{ÅÔÓÏÂÉÏ}
+\Large{Ð}\large{ÏËÕÔÅ×ÍÅÉÏ} \\
+\normalsize{Ô}\small{ÌÇÌÁ}
+\normalsize{Ç}\small{ËÅÊÔÑÏËÏÃÙÍ}
+\normalsize{Ì}\small{Ç×ÁÍÉÊÙÍ}
+\normalsize{Ê}\small{ÁÉ}
+\normalsize{Ì}\small{Ç×ÁÍÉÊÙÍ}
+\normalsize{Õ}\small{ÐÏËÏÃÉÓÔÙÍ} \\
+\vspace{2ex}
+ÔïìÝáò Çëåêôñéêþí Âéïìç÷áíéêþí ÄéáôÜîåùí êáé ÓõóôçìÜôùí ÁðïöÜóåùí \\
+ÅñãáóôÞñéï ÓõóôçìÜôùí ÁðïöÜóåùí êáé Äéïßêçóçò
+\end{center}
+
+\begin{center}
+\vspace{8ex}
+\large \textbf{Äéåñåýíçóç áéôéùäþí ó÷Ýóåùí óôçí åëëçíéêÞ áãïñÜ çëåêôñéêÞò åíÝñãåéáò ìå ôç ÷ñÞóç ìåèüäùí ìç÷áíéêÞò ìÜèçóçò} \\
+\vspace{7ex}
+\large
+ÄÉÐËÙÌÁÔÉÊÇ ÅÑÃÁÓÉÁ \\
+\vspace{2ex}
+\normalsize
+ôïõ \\
+\vspace{2ex}
+\parbox[c]{0.4\textwidth} { \center\textbf{
+Äçìçôñßïõ ÐáíïõñÞ}}
+
+\vspace{7ex}
+\flushleft
+\begin{tabbing}
+\textbf{ÅðéâëÝðùí}: \= ÉùÜííçò ØáññÜò \\
+		    \>  ÊáèçãçôÞò
+\end{tabbing}
+\end{center}
+
+\noindent
+Åãêñßèçêå áðü ôçí ôñéìåëÞ åîåôáóôéêÞ åðéôñïðÞ ôçí 29/10/2014.
+\\
+\\
+\begin{center}
+\parbox[b]{0.3\textwidth} {\center
+	.................................. \\
+	ÉùÜííçò \\ ØáññÜò \\
+	ÊáèçãçôÞò	
+}
+\parbox[b]{0.3\textwidth} {\center
+	.................................. \\
+	ÄçìÞôñéïò Áóêïýíçò
+	ÁíáðëçñùôÞò ÊáèçãçôÞò
+}
+\parbox[b]{0.3\textwidth} {\center
+	.................................. \\
+	Âáóßëåéïò Áóçìáêüðïõëïò
+	ÊáèçãçôÞò
+}
+\end{center}
+
+\normalsize
+\noindent
+\date{
+\normalsize
+\begin{center}
+ÁèÞíá, Ïêôþâñéïò 2014
+\end{center}}
+
+\newpage
+\thispagestyle{empty}
+\hspace{10pt}
+
+\vspace{30ex}
+\noindent
+................................... \\
+\textbf{ÄçìÞôñéïò ÐáíïõñÞò} \\
+Äéðëùìáôïý÷ïò Çëåêôñïëüãïò Ìç÷áíéêüò êáé Ìç÷áíéêüò Õðïëïãéóôþí Å.Ì.Ð.\\
+\vspace{8ex}
+
+\noindent
+ \\
+ \\
+ \\
+\vspace{8ex}
+
+\noindent
+\\
+\\
+ \\
+\vspace{26ex}
+
+\small
+\noindent
+\copyright \hspace{1em}2014 Åèíéêü Ìåôóüâéï Ðïëõôå÷íåßï
+
+\newpage
+\thispagestyle{empty}
+\vspace{-6ex}
+\begin{center}
+\includegraphics[scale=1]{pyrforos.eps}
+
+\Large{Å}\large{ÈÍÉÊÏ}
+\Large{Ì}\large{ÅÔÓÏÂÉÏ}
+\Large{Ð}\large{ÏËÕÔÅ×ÍÅÉÏ} \\
+\normalsize{Ô}\small{ÌÇÌÁ}
+\normalsize{Ç}\small{ËÅÊÔÑÏËÏÃÙÍ}
+\normalsize{Ì}\small{Ç×ÁÍÉÊÙÍ}
+\normalsize{Ê}\small{ÁÉ}
+\normalsize{Ì}\small{Ç×ÁÍÉÊÙÍ}
+\normalsize{Õ}\small{ÐÏËÏÃÉÓÔÙÍ} \\
+\vspace{2ex}
+ÔïìÝáò Çëåêôñéêþí Âéïìç÷áíéêþí ÄéáôÜîåùí êáé ÓõóôçìÜôùí ÁðïöÜóåùí \\
+ÅñãáóôÞñéï ÓõóôçìÜôùí ÁðïöÜóåùí êáé Äéïßêçóçò \\
+\end{center}
+\vspace{55ex}
+\copyright 2014 ÄçìÞôñéïò ÐáíïõñÞò\\
+\tl{Creative Commons Attribution 4.0 International License} \\
+\tl{This work is licensed under the Creative Commons Attribution 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/}\\
+\\
+\\
+\begin{figure}[h]
+  \makebox[\textwidth][c]{\includegraphics{fig/by.png}}%
+\end{figure}
+
+\newpage\null\thispagestyle{empty}\newpage
+    
+\cleardoublepage
+\thispagestyle{empty}
+\hspace{10pt}
+
+\vspace{20ex}
+\noindent
+ \begin{quotation}
+\textit{\tl{The best way to predict the future is to invent it.} \\
+	\tl{Theodore Hook}}
+ \end{quotation}
+
+\newpage\null\thispagestyle{empty}\newpage
+    
+\cleardoublepage
+
+\setcounter{page}{1}
+\chapter*{Åõ÷áñéóôßåò}
+
+Èá Þèåëá íá åõ÷áñéóôÞóù ôïõò êáèçãçôÝò ìïõ ê. ØáññÜ êáé ê. Áóêïýíç ãéá ôï üñáìá ðïõ ìïõ ìåôÝäùóáí üðùò êáé ôçí åìðéóôïóýíç ðïõ ìïõ Ýäåéîáí üëï ôï äéÜóôçìá ôçò ãíùñéìßáò ìïõ ìáæß ôïõò. Åõ÷áñéóôþ åðßóçò ôïí ê. ØáññÜ ãéá ôçí äõíáôüôçôá ðïõ ìïõ Ýäùóå íá ãßíù âïçèüò óôï ìÜèçìá \tl{"}Ðáßãíéá ÁðïöÜóåùí\tl{"}, ôï ïðïßï Þôáí êáèïñéóôéêÞò óçìáóßáò ãéá ìÝíá êáé ãéá ôçí åîÝëéîÞ ìïõ óôï ðïëõôå÷íåßï. Ôï íá ðåñáôþóù ôçí äéðëùìáôéêÞ ìïõ óôï ÅñãáóôÞñéï ÓõóôçìÜôùí ÁðïöÜóåùí êáé Äéïßêçóçò Þôáí Ýíá öõóéêü åðáêüëïõèï.
+
+Óôá ðëáßóéá ôçò äéðëùìáôéêÞò èá Þèåëá íá åõ÷áñéóôÞóù ôïí ê. ÓùôÞñç ÐáðáäÝëç ãéá ôï åîáßñåôï èÝìá ðÜíù óôï ïðïßï åðéêåíôñþèçêå ç ÝñåõíÜ ìáò üðùò êáé ãéá ôéò óõìâïëÝò êáé ôçí êáèïäÞãçóÞ ôïõ êáè' üëç ôçí äéÜñêåéá ôçò äéðëùìáôéêÞò. Åðßóçò ôïí åõ÷áñéóôþ èåñìÜ ãéá ôçí åëåõèåñßá ðïõ ìïõ Ýäùóå óôï íá åðéëÝîù ôá åñãáëåßá êáé ôïí ôñüðï åñãáóßáò ðïõ Ýãéíå ç áíÜëõóç.
+
+ÔÝëïò åõ÷áñéóôþ ôïõò ößëïõò ìïõ, ôç óýíôñïöü ìïõ êáé ôçí ïéêïãÝíåéÜ ìïõ ãéá ôçí áãÜðç êáé õðïóôÞñéîç ôïõò üëï áõôü ôïí êáéñü.
+
+\addcontentsline{toc}{chapter}{Åõ÷áñéóôßåò}
+\newpage
+\thispagestyle{empty}
+\chapter*{Ðåñßëçøç}
+
+Ç ìç÷áíéêÞ ìÜèçóç åßíáé ìßá ðåñéï÷Þ ôçò åðéóôÞìçò ôùí õðïëïãéóôþí ðïõ áó÷ïëåßôáé ìå ôçí êáôáóêåõÞ êáé ìåëÝôç óõóôçìÜôùí ðïõ ìðïñïýí ìÝóù áõôïìáôïðïéçìÝíçò áíÜëõóçò íá ìÜèïõí áðü ôá äåäïìÝíá áðü ôá ïðïßá ôñïöïäïôïýíôáé. 
+
+Óôçí ðáñïýóá äéðëùìáôéêÞ åîåôÜæïõìå ôñåéò áëãïñßèìïõò ôïõ êëÜäïõ ôçò ìç÷áíéêÞò ìÜèçóçò, \tl{Random Forest}, \tl{MARS} êáé \tl{CART}, êáé ìå âÜóç áõôïýò êÜíïõìå ìßá áíÜëõóç óôç ÷ïíäñéêÞ åëëçíéêÞ áãïñÜ çëåêôñéêÞò åíÝñãåéáò. Ðéï óõãêåêñéìÝíá, äçìéïõñãïýìå ìïíôÝëá ìå âÜóç ÷áñáêôçñéóôéêÜ ôçò åëëçíéêÞò áãïñÜò êáé êÜíïõìå ðñïâëÝøåéò ôïõ \tl{SMP}, ôï ïðïßï áðïôåëåß ôçí ôéìÞ ôçò çëåêôñéêÞò åíÝñãåéáò óôç ÷ïíäñåìðïñéêÞ áãïñÜ. Ôáõôü÷ñïíá ìåëåôÜìå ôéò ó÷Ýóåéò ìåôáîý ôùí ìåôáâëçôþí óôïí êáèïñéóìü ôçò ôéìÞò üðùò êáé ôéò óçìáíôéêüôçôÝò ôïõò êáé ðþò áõôÝò åðçñåÜæïíôáé. Éäéáßôåñï âÜñïò äßíåôáé óôï öõóéêü áÝñéï êáé óôç ó÷Ýóç ôïõ ìå ôï \tl{SMP}.
+
+Óôï êåöÜëáéï 1 êÜíïõìå ìßá åéóáãùãÞ êáé åîçãïýìå ôçí ïñïëïãßá ðïõ èá ÷ñçóéìïðïéçèåß. Óôá êåöÜëáéá 2 Ýùò 4 ãßíåôáé ìßá èåùñçôéêÞ áíÜëõóç ôùí áëãïñßèìùí ðïõ ÷ñçóéìïðïéïýíôáé. Óôï êåöÜëáéï 5 ìåëåôÜìå ôçí åëëçíéêÞ ÷ïíäñéêÞ áãïñÜ çëåêôñéêÞò åíÝñãåéáò, ôá ÷áñáêôçñéóôéêÜ ôçò êáé ôéò ó÷Ýóåéò ìåôáîý ôïõò. Óôï êåöÜëáéï 6 ãßíåôáé ç ðñïåðåîåñãáóßá ôùí äåäïìÝíùí. Óôï êåöÜëáéï 7 ãßíåôáé áíÜëõóç óå ïëüêëçñç ôçí ÷ñïíïóåéñÜ ìå ôõ÷áßá äåßãìáôá þóôå íá äïýìå ôçí éêáíüôçôá ðñüâëåøçò ôùí áëãïñßèìùí üðùò êáé ôéò óçìáíôéêüôçôåò ôùí ìåôáâëçôþí óôïí êáèïñéóìü ôçò ôéìÞò. Óôï êåöÜëáéï 8 ãßíåôáé áíÜëõóç ôçò ÷ñïíïóåéñÜò ìÝóù \tl{lagged} ìåôáâëçôþí þóôå íá âåëôéóôïðïéÞóïõìå ôá ìïíôÝëá ðñüâëåøçò. Åðßóçò åîåôÜæïíôáé ïé ó÷Ýóåéò ìåôáîý ôùí ìåôáâëçôþí ìÝóù \tl{partial dependence plots}. Óôï êåöÜëáéï 9 ðáñáèÝôïõìå ôá óõìðåñÜóìáôá ôçò åñãáóßáò.
+
+Ãéá ôçí áíÜëõóç ÷ñçóéìïðïéÞèçêå ç ãëþóóá \tl{Python} óå ðåñéâÜëëïí \tl{Anaconda} ìå åêôåôáìÝíç ÷ñÞóç ôùí âéâëéïèçêþí \tl{scikit-learn, py-earth, numpy, pandas, matplotlib}. Ç óõããñáöÞ ôçò äéðëùìáôéêÞò Ýãéíå óå \tl{MiKTeX} óôï ðåñéâÜëëïí \tl{Texmaker}.
+
+\subsection*{ËÝîåéò ÊëåéäéÜ}
+Ìç÷áíéêÞ ìÜèçóç, \tl{CART, Random Forests, MARS, System Marginal Price}, åëëçíéêÞ áãïñÜ çëåêôñéêÞò åíÝñãåéáò, öõóéêü áÝñéï
+
+\addcontentsline{toc}{chapter}{Ðåñßëçøç}
+\newpage
+\thispagestyle{empty}
+\chapter*{\textlatin{Abstract}}
+\en
+Machine learning is a subfield of computer science that deals with the construction and study of algorithms that can learn from data by building an adaptive model based on inputs.
+
+In this thesis we examine three machine learning algorithms, Random Forest, MARS and CART, and we perform an analysis on the Greek wholesale electricity market. More specifically, based on features of the Greek electricity market, we make projections of the System Marginal Price, which is the price of electricity on the Greek wholesale market. Moreover, we study the most important features that determine the price and the relationships between them. Particular emphasis is placed on natural gas and its relation to the SMP.
+
+In chapter 1, which is introductory, we explain the terminology that will be used in later chapters. In chapters 2-4 we provide a theoretical analysis of the algorithms. In chapter 5 we study the Greek wholesale power market, its features and the relationships between them. In chapter 6 we preprocess the data. In chapter 7 we present an analysis with random samples across the entire series, in order to evaluate the predictive power of the algorithms as well as the most important features that define the price. In chapter 8 we analyze the time series using lagged variables in order to optimize the predictive models. We also examine the relationships between the most important features via partial dependence plots. In Chapter 9 we present the conclusions of this dissertation.
+
+For the analysis we used the Python programming language and the Anaconda IDE. We made extensive use of the packages scikit-learn, py-earth, numpy, pandas, matplotlib. The thesis was written in MiKTeX in the environment Texmaker.
+
+\subsection*{Keywords}
+Machine learning, CART, Random Forests, MARS, System Marginal Price, Greek wholesale electricity market, natural gas
+
+\gr
+
+\addcontentsline{toc}{chapter}{\textlatin{Abstract}}
+
+\newpage
+\thispagestyle{empty}
+
+\tableofcontents
+\addcontentsline{toc}{chapter}{Ðåñéå÷üìåíá}
+\newpage
+\thispagestyle{empty}
+
+\listoffigures
+\newpage
+\thispagestyle{empty}
+
+%\listoftables
+%\newpage
+%\thispagestyle{empty}
+
+\part{Èåùñçôéêü Õðüâáèñï}
+
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\newpage
+\thispagestyle{empty}
+\part{ÁíÜëõóç áãïñÜò çëåêôñéêÞò åíÝñãåéáò}
+\include{chapter5}
+\include{chapter6}
+\include{chapter7}
+\include{chapter8}
+\include{chapter9}
+\newpage
+\thispagestyle{empty}
+\bibliographystylepri{plain}
+\bibliographypri{mybib}
+\makeatletter % Reference list option change
+\renewcommand\@biblabel[1]{(#1)} % from [1] to 1.
+\makeatother
+
+\newpage
+\thispagestyle{empty}
+
+\bibliographystylesec{plain}
+\bibliographysec{mybib}
+
+%\nocite{*}
+%\bibliography{mybib}{}
+%\bibliographystyle{plain}
+\end{document} 

@@ -1,0 +1,170 @@
+\begin{thebibliography}{10}
+
+\bibitem{analysisres}
+\tl{Assessment of Policy Impacts on Sustainability in Europe}.
+
+\bibitem{efron1994introduction}
+\textlatin{Efron, Bradley and Tibshirani, Robert J}.
+\newblock {\em \textlatin{An introduction to the bootstrap}}.
+\newblock \textlatin{CRC press}, 1994.
+
+\bibitem{mar_cross}
+\textlatin{Marianthi Markatou}~\textlatin{George Hripcsak} \textlatin{Hong
+  Tian}, \textlatin{Shameek Biswas}.
+\newblock {\em \textlatin{Analysis of Variance of Cross-Validation Estimators
+  of the Generalization Error}}.
+\newblock \textlatin{Journal of Machine Learning Research 6}, 2005.
+
+\bibitem{Elem}
+\textlatin{Robert Tibshirani} \textlatin{Jerome Friedman}, \textlatin{Trevor
+  Hastie}.
+\newblock {\em \textlatin{The Elements of Statistical Learning: Data Mining,
+  Inference, and Prediction, Second Edition}}.
+\newblock \textlatin{Springer}, 2009.
+
+\bibitem{Abu}
+\textlatin{Yaser S. Abu-Mostafa} \textlatin{Malik Magdon-Ismail}.
+\newblock {\em \textlatin{Learning From Data}}.
+\newblock \textlatin{AMLBook}, 2012.
+
+\bibitem{ron}
+\textlatin{Ron Kohavi}.
+\newblock {\em \textlatin{A study of cross-validation and bootstrap for
+  accuracy estimation and model selection}}.
+\newblock \textlatin{Proceedings of the Fourteenth International Joint
+  Conference on Artificial Intelligence}, 1995.
+
+\bibitem{berk_forests}
+\tl{Leo Breiman} \tl{Adele Cutler}.
+\newblock {\em \tl{Random Forests}}.
+\newblock \textlatin{Machine Learning Journal}.
+
+\bibitem{cart_mars}
+\tl{Ana-Maria Staicu}.
+\newblock \tl{Classification Trees and MARS}.
+
+\bibitem{atkeson1999locally}
+\tl{Andrew W and Schaal}~\tl{Stefan} \tl{Atkeson}, \tl{Christopher G and
+  Moore}.
+\newblock \tl{Locally weighted learning}.
+\newblock {\em \tl{Artificial Intelligence Review}}, 1999.
+
+\bibitem{berk2008statistical}
+\tl{Berk, Richard A}.
+\newblock {\em \tl{Statistical learning from a regression perspective}}.
+\newblock \tl{Springer}, 2008.
+
+\bibitem{bosco2010long}
+\tl{Bosco, Bruno and Parisio, Lucia and Pelagatti, Matteo and Baldi, Fabio}.
+\newblock \tl{Long-run relations in European electricity prices}.
+\newblock {\em \tl{Journal of applied econometrics}}, 25(5):805--832, 2010.
+
+\bibitem{breiman1984classification}
+\tl{Breiman, Leo and Friedman, Jerome and Stone, Charles J and Olshen, Richard
+  A}.
+\newblock {\em \tl{Classification and regression trees}}.
+\newblock \tl{CRC press}, 1984.
+
+\bibitem{recpartition}
+\tl{Carolin Strobl, James Malley, Gerhard Tutz}.
+\newblock {\em \tl{An Introduction to Recursive Partitioning: Rationale,
+  Application and Characteristics of Classification and Regression Trees,
+  Bagging and Random Forests}}.
+\newblock \tl{Psychol Methods}, 2009.
+
+\bibitem{clauset2011brief}
+\tl{Clauset, Aaron}.
+\newblock \tl{A brief primer on probability distributions}.
+\newblock {\em \tl{Santa Fe Institute}}, 2011.
+
+\bibitem{Criminisi2011TR}
+\tl{Criminisi, A. and Shotton, J. and Konukoglu, E.}
+\newblock {\em \tl{Decision Forests for Classification, Regression, Density
+  Estimation, Manifold Learning and Semi-Supervised Learning.}}
+\newblock 2011.
+
+\bibitem{de2009cointegration}
+\tl{De Jong, Cyriel and Schneider, Stefan}.
+\newblock \tl{Cointegration between gas and power spot prices}.
+\newblock {\em \tl{The Journal of Energy Markets}}, 2(3):27--46, 2009.
+
+\bibitem{deng2011bias}
+\tl{Deng, Houtao and Runger, George and Tuv, Eugene}.
+\newblock \tl{Bias of importance measures for multi-valued attributes and
+  solutions}.
+\newblock \tl{Springer}, 2011.
+
+\bibitem{ferkingstad2011causal}
+\tl{Ferkingstad, Egil and L{\o}land, Anders and Wilhelmsen, Mathilde}.
+\newblock \tl{Causal modeling and inference for electricity markets}.
+\newblock {\em \tl{Energy Economics}}, 33(3):404--412, 2011.
+
+\bibitem{fielding1999machine}
+\tl{Fielding, Alan}.
+\newblock {\em \tl{Machine learning methods for ecological applications}}.
+\newblock \tl{Springer}, 1999.
+
+\bibitem{frayman2002solving}
+\tl{Frayman, Yakov and Rolfe, Bernard F and Webb, Geoffrey I}.
+\newblock \tl{Solving regression problems using competitive ensemble models}.
+\newblock \tl{Springer}, 2002.
+
+\bibitem{friedman1991multivariate}
+\tl{Friedman, Jerome H}.
+\newblock \tl{Multivariate adaptive regression splines}.
+\newblock {\em \tl{The annals of statistics}}, 1991.
+
+\bibitem{friedman1995introduction}
+\tl{Friedman, Jerome H and Roosen, Charles B}.
+\newblock \tl{An introduction to multivariate adaptive regression splines}.
+\newblock {\em \tl{Statistical Methods in Medical Research}}, 4(3):197--217,
+  1995.
+
+\bibitem{furio2012price}
+\tl{Furi{\'o}, Dolores and Chuli{\'a}, Helena}.
+\newblock \tl{Price and volatility dynamics between electricity and fuel costs:
+  Some evidence for Spain}.
+\newblock {\em \tl{Energy Economics}}, 34(6):2058--2065, 2012.
+
+\bibitem{gantz2012digital}
+\tl{Gantz, John and Reinsel, David}.
+\newblock \tl{The digital universe in 2020: Big data, bigger digital shadows,
+  and biggest growth in the far east}.
+\newblock {\em \tl{IDC iView: IDC Analyze the Future}}, 2012.
+
+\bibitem{lee2001review}
+\tl{Lee, Sang Jun and Siau, Keng}.
+\newblock \tl{A review of data mining techniques}.
+\newblock {\em \tl{Industrial Management \& Data Systems}}, 101(1):41--46,
+  2001.
+
+\bibitem{munoz2004comparison}
+\tl{Mu{\~n}oz, Jes{\'u}s and Felic{\'\i}simo, {\'A}ngel M}.
+\newblock \tl{Comparison of statistical methods commonly used in predictive
+  modelling}.
+\newblock {\em \tl{Journal of Vegetation Science}}, 15(2):285--292, 2004.
+
+\bibitem{quinlan1987simplifying}
+\tl{Quinlan, J. Ross}.
+\newblock \tl{Simplifying decision trees}.
+\newblock {\em \tl{International journal of man-machine studies}},
+  27(3):221--234, 1987.
+
+\bibitem{saar2007handling}
+\tl{Saar-Tsechansky, Maytal and Provost, Foster}.
+\newblock \tl{Handling missing values when applying classification models}.
+\newblock 2007.
+
+\bibitem{spssclementine}
+\tl{SPSS Inc.}
+\newblock {\em \tl{SPSS Clementine 12.0 Algorithms Guide}}.
+\newblock 2007.
+
+\bibitem{tetko1995neural}
+\tl{Alexander I} \tl{Tetko, Igor V and Livingstone}, \tl{David J and Luik}.
+\newblock \tl{Neural network studies. 1. Comparison of overfitting and
+  overtraining}.
+\newblock {\em \tl{Journal of Chemical Information and Computer Sciences}},
+  35(5):826--833, 1995.
+
+\end{thebibliography}

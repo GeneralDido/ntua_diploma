@@ -1,0 +1,37 @@
+\documentclass [serif]{beamer}
+\usepackage[english,greek]{babel}
+\usepackage{epsfig}
+\usepackage[iso-8859-7]{inputenc}
+\usetheme[compress]{Singapore}
+\newcommand{\tl}[1]{\textlatin{#1}}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Περιεχόμενα}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+\begin{document}
+
+\title[Μηχανική Μάθηση] % (optional, only for long titles)
+{Διερεύνηση αιτιωδών σχέσεων στην ελληνική αγορά ηλεκτρικής ενέργειας με τη χρήση μεθόδων μηχανικής μάθησης}
+\author[Δημήτρης Πανουρής] % (optional, for multiple authors)
+{Δημήτρης Πανουρής}
+\institute[Universities Here and There] % (optional)
+{
+Σχολή Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών ΕΜΠ
+}
+
+\frame{\titlepage}
+
+\include{1.intro}
+\include{2.cart}
+\include{3.rf}
+\include{4.mars}
+\include{5.gr_market}
+\include{6.analysi1}
+\include{7.analysi2}
+\include{8.symperasmata}
+
+\end{document}

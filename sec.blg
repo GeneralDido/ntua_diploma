@@ -1,0 +1,40 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: sec.aux
+The style file: plain.bst
+Database file #1: mybib.bib
+I was expecting a `,' or a `}'---line 48 of file mybib.bib
+ :  YEAR=2012
+ :           .
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 55 of file mybib.bib
+ :  YEAR=2009
+ :           .
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 62 of file mybib.bib
+ :  YEAR=1995
+ :           .
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 68 of file mybib.bib
+ :  YEAR=2005
+ :           .
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 73 of file mybib.bib
+ : YEAR = 2007
+ :            .
+I'm skipping whatever remains of this entry
+Unbalanced braces---line 238 of file mybib.bib
+ :  howpublished = "\textlatin{http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm#ooberr}
+ :                                                                                                    }"
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in kaggle
+Warning--to sort, need author or key in mathworks
+Warning--to sort, need author or key in residual
+Warning--to sort, need author or key in crossval
+Warning--to sort, need author or key in unc_edu
+Warning--to sort, need author or key in shannon
+Warning--to sort, need author or key in mars_example
+Warning--to sort, need author or key in mars_train
+Warning--to sort, need author or key in mars_ref
+Warning--to sort, need author or key in sklearn
+Warning--to sort, need author or key in pyearth
+Warning--to sort, need author or key in kdkeys
+(There were 6 error messages)

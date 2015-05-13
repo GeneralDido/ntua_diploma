@@ -1,0 +1,183 @@
+\select@language {greek}
+\select@language {english}
+\select@language {greek}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces \textlatin {Cross Validation} kai \textlatin {Residual error}}}{20}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Par'adeigma \textlatin {recursive partitioning} me d'uo \textlatin {predictors}}}{24}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Perioq'es sto ep'ipedo $\textlatin {X}_{1}$, $\textlatin {X}_{2}$ met'a ap'o \textlatin {recursive partition}}}{24}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Duadik'o d'entro met'a ap'o \textlatin {recursive partition}}}{25}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces K'erdos plhrofor'ias se diakrit'h katanom'h. (\textlatin {a}) Arqik'o s'unolo dedom'enwn $S$. (\textlatin {b}) Met'a ap'o oriz'ontio diaqwrism'o. (\textlatin {c}) Met'a ap'o katak'orufo diaqwrism'o. }}{26}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \textlatin {MARS} kai \textlatin {Linear Regression}}}{34}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Oi sunart'hseis b'ashs $(x-t)_+$ kai $(t-x)_+$ tou \textlatin {MARS}}}{35}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Par'adeigma sun'arthshs ws gin'omeno sunart'hsewn b'ashs}}{37}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Ekpa'ideush en'os duadiko'u d'entrou}}{42}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces 'Exodos ws to s'unolo (\textlatin {ensemble}) ekpa'ideushs}}{43}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Qrhmatik'es ro'es sthn ellhnik'h agor'a hlektrik'hs en'ergeias}}{50}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Kamp'ulh prosfor'as ellhnik'hs agor'as hlektrik'hs en'ergeias}}{51}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Aiti'wdeis sq'eseis sthn ellhnik'h agor'a hlektrik'hs en'ergeias}}{54}
+\addvspace {10\p@ }
+\select@language {english}
+\select@language {greek}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces \textlatin {SMP}}}{56}
+\select@language {english}
+\select@language {greek}
+\select@language {greek}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Qarakthristik'a metablht'wn sust'hmatos}}{58}
+\select@language {english}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {english}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\addvspace {10\p@ }
+\select@language {english}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {english}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {english}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {english}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces \textlatin {Random Forest: Accuracy}}}{65}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces \textlatin {Random Forest: Mean absolute error}}}{66}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces \textlatin {Random Forest: Mean squared error}}}{66}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces \textlatin {Random Forest}: Diafor'a \textlatin {real-expected} tim'wn tou \textlatin {SMP}}}{67}
+\select@language {english}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces \textlatin {Random Forest: Feature Importances}}}{68}
+\select@language {english}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {english}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces \textlatin {Tree Regressor: Accuracy}}}{70}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces \textlatin {Tree Regressor: Mean absolute error}}}{70}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces \textlatin {Tree Regressor: Mean squared error}}}{71}
+\contentsline {figure}{\numberline {7.9}{\ignorespaces \textlatin {Tree Regressor}: Diafor'a \textlatin {real-expected} tim'wn tou \textlatin {SMP}}}{72}
+\contentsline {figure}{\numberline {7.10}{\ignorespaces \textlatin {Tree Regressor: Feature Importances}}}{73}
+\select@language {english}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\contentsline {figure}{\numberline {7.11}{\ignorespaces D'entro algor'ijmou \textlatin {Tree Regressor} - b'ajos 4}}{75}
+\contentsline {figure}{\numberline {7.12}{\ignorespaces \textlatin {MARS: Forward Pass}}}{76}
+\select@language {english}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\contentsline {figure}{\numberline {7.13}{\ignorespaces \textlatin {MARS: Pruning Pass}}}{77}
+\contentsline {figure}{\numberline {7.14}{\ignorespaces \textlatin {MARS}: Pragmatik'es kai ektimhje'ises tim'es tou \textlatin {SMP}}}{78}
+\contentsline {figure}{\numberline {7.15}{\ignorespaces \textlatin {MARS: Earth Model}}}{79}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces \textlatin {Residuals Example}}}{82}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Qronoseir'a \textlatin {SMP}}}{82}
+\select@language {english}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\select@language {greek}
+\contentsline {figure}{\numberline {8.3}{\ignorespaces \textlatin {Variance for different lagged values}}}{85}
+\contentsline {figure}{\numberline {8.4}{\ignorespaces \textlatin {Cross Validation for different lagged values}}}{86}
+\contentsline {figure}{\numberline {8.5}{\ignorespaces \textlatin {MAE for different lagged values}}}{86}
+\contentsline {figure}{\numberline {8.6}{\ignorespaces \textlatin {Residuals for different lagged values}}}{87}
+\contentsline {figure}{\numberline {8.7}{\ignorespaces \textlatin {Random Forest - no lag}}}{88}
+\contentsline {figure}{\numberline {8.8}{\ignorespaces \textlatin {Random Forest - lag} 'ews \textlatin {t-2}}}{88}
+\contentsline {figure}{\numberline {8.9}{\ignorespaces \textlatin {MARS - lag} 'ews \textlatin {t-2}}}{89}
+\contentsline {figure}{\numberline {8.10}{\ignorespaces An'alush dedom'enwn 1}}{90}
+\contentsline {figure}{\numberline {8.11}{\ignorespaces \textlatin {Variance} - An'alush 1h}}{91}
+\contentsline {figure}{\numberline {8.12}{\ignorespaces MAE - An'alush 1h}}{91}
+\contentsline {figure}{\numberline {8.13}{\ignorespaces An'alush dedom'enwn 2}}{92}
+\contentsline {figure}{\numberline {8.14}{\ignorespaces \textlatin {Variance} - An'alush 2h}}{93}
+\contentsline {figure}{\numberline {8.15}{\ignorespaces \textlatin {Random Forest} kai \textlatin {MARS} - \textlatin {Real - Predicted}}}{93}
+\contentsline {figure}{\numberline {8.16}{\ignorespaces An'alush dedom'enwn 3}}{94}
+\contentsline {figure}{\numberline {8.17}{\ignorespaces \textlatin {Variance} - An'alush 3h}}{95}
+\contentsline {figure}{\numberline {8.18}{\ignorespaces \textlatin {MAE} - An'alush 3h}}{95}
+\contentsline {figure}{\numberline {8.19}{\ignorespaces \textlatin {MARS} Stigmi'otupo - An'alush 3h}}{96}
+\contentsline {figure}{\numberline {8.20}{\ignorespaces \textlatin {Random Forest} kai \textlatin {MARS} - \textlatin {Real - Predicted} An'alush 3}}{96}
+\contentsline {figure}{\numberline {8.21}{\ignorespaces \textlatin {Partial Dependence - Target Features}}}{97}
+\contentsline {figure}{\numberline {8.22}{\ignorespaces \textlatin {Partial Dependence of SMP on load\_forecast and ngas}}}{98}
+\addvspace {10\p@ }
